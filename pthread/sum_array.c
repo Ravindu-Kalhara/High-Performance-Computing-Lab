@@ -3,7 +3,7 @@
 
 #define NUM_THREADS 4
 
-void sumArray(int arr[], int size);
+void sum_array(int arr[], int size);
 void *thread_function(void *arg);
 
 struct Range{
@@ -23,7 +23,7 @@ int sum = 0;
 
 int main(){
     int N = sizeof(arr)/sizeof(int);
-    sumArray(arr, N);
+    sum_array(arr, N);
 
     int segment = N/NUM_THREADS;
     for (int i=0; i<NUM_THREADS; i++){
@@ -45,7 +45,7 @@ int main(){
     return 0;
 }
 
-void sumArray(int arr[], int N) {
+void sum_array(int arr[], int N) {
     int sum = 0;
     for (int i=0; i<N; i++) {
         sum += arr[i];
