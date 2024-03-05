@@ -25,6 +25,8 @@ int main(){
     int N = sizeof(arr)/sizeof(int);
     sum_array(arr, N);
 
+    pthread_mutex_init(&mutex, NULL);
+
     int segment = N/NUM_THREADS;
     for (int i=0; i<NUM_THREADS; i++){
         ranges[i].start = i*segment;
@@ -41,6 +43,8 @@ int main(){
         pthread_join(threads[i], NULL);
     }
     printf("Sum (parallel) = %d \n", sum);
+
+    pthread_mutex_destroy(&mutex);
 
     return 0;
 }
