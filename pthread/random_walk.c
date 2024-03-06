@@ -87,7 +87,7 @@ void* update_position(void *arg){
 void* read_position(void *arg){
     struct Random_Walker *walker = (struct Random_Walker *) arg;
 
-    for (int i=0; i<NUM_STEPS; i++){
+    for (int i=0; i<NUM_STEPS/3; i++){
         pthread_rwlock_rdlock(&rwlock);
         printf("Possition (in read_position): (%d, %d) \n", walker->x, walker->y);
         pthread_rwlock_unlock(&rwlock);
