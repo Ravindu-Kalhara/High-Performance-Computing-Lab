@@ -90,8 +90,8 @@ void* read_position(void *arg){
     for (int i=0; i<NUM_STEPS/3; i++){
         pthread_rwlock_rdlock(&rwlock);
         printf("Possition (in read_position): (%d, %d) \n", walker->x, walker->y);
-        pthread_rwlock_unlock(&rwlock);
         sleep(0.1);
+        pthread_rwlock_unlock(&rwlock);
     }
     return NULL;
 }
