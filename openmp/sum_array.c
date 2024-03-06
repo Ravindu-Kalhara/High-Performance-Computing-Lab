@@ -14,9 +14,11 @@ int sum = 0;
 int main(){
     int N = sizeof(arr)/sizeof(int);
 
-    #pragma omp parallel for num_threads(NUM_THREADS)
+    // the reduction(+:sum) clause specifies that the sum variable is a reduction variable,
+    // meaning that each thread has its own copy of sum, and at the end of the loop, all the values of 
+    // sum are combined using the + operator.
+    #pragma omp parallel for reduction(+:sum) num_threads(NUM_THREADS)
     for (int i=0; i<N; i++){
-        #pragma omp atomic
         sum += arr[i];
     }
 
